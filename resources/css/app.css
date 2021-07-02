@@ -1,0 +1,7 @@
+
+@import "base/_mixins.css";
+@import "sections/_header.css";
+
+@tailwind base; 
+@tailwind components;
+@tailwind utilities;

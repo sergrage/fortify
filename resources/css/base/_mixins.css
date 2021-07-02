@@ -1,0 +1,29 @@
+@define-mixin atSm {
+	@media (min-width: 640px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin atMd {
+	@media (min-width: 768px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin atLg {
+	@media (min-width: 1024px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin atXl {
+	@media (min-width: 1280px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin at2Xl {
+	@media (min-width: 1536px) {
+		@mixin-content;
+	}
+}
