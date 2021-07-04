@@ -8,26 +8,33 @@
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <title>Fortify</title>
 </head>
-<body>
-<div class="container">
-    <div class="">
-        Nav goes here for auth layout
-        <ul>
-            <li><a href="{{ route('profile') }}">Данные пользователя</a></li>
-            <li>
-                <form method="POST" action="{{ route('logout')  }}">
+<body class="font-sans leading-normal tracking-normal">
+<div id="app">
+    <header>
+        <!--Nav-->
+        <nav class="bg-gray-800 p-2 mt-0 w-full"> <!-- Add this to make the nav fixed: "fixed z-10 top-0" -->
+            <menu-component></menu-component>
+            <menubtn-component></menubtn-component>
+            <div class="hidden lg:block absolute w-1/4 top-0 right-0 px-6 py-6 text-right">
+                <a href="{{ url('/home') }}" class="text-sm text-white underline mt-6">{{Auth()->user()->name}}</a>
+                <form class="inline" method="POST" action="{{ route('logout')  }}">
                     @csrf
-                    <a href="{{  route('logout')  }}" onclick="event.preventDefault();
-                       this.closest('form').submit();">
+                    <a href="{{  route('logout')  }}" class="text-sm text-white underline mt-6 ml-5" onclick="event.preventDefault();
+                   this.closest('form').submit();">
                         Выйти
                     </a>
                 </form>
-            </li>
-        </ul>
-    </div>
-    <div class="">
+            </div>
+        </nav>
+    </header>
+    <main>
         {{ $slot  }}
-    </div>
+    </main>
+    <footer>
+
+    </footer>
+
 </div>
+<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

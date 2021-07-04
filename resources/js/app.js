@@ -6,14 +6,15 @@ import Vue from 'vue'
 import store from './store'
 
 
-Vue.component('test-component', require('./components/TestComponent.vue').default);
+Vue.component('menubtn-component', require('./components/header/MenuButtonComponent.vue').default);
+Vue.component('menu-component', require('./components/header/MenuComponent.vue').default);
 
 
 let app = new Vue ({
     el: '#app',
     store,
     created() {
-
+        this.$store.dispatch("checkAuth")
 	},
     mounted(){
 
