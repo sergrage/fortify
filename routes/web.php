@@ -22,7 +22,7 @@ Route::middleware(['auth', 'verified'])->get('/dashboard', function(){
    return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth'])->get('/profile', function(){
+Route::middleware(['auth', 'verified'])->get('/profile', function(){
    return view('profile');
 })->name('profile');
 
@@ -31,5 +31,8 @@ Route::middleware(['auth'])->get('/profile', function(){
 Route::get('user-is-auth', fn() => Auth::check() ? 1 : 0);
 
 
-Route::get('/test/1', [App\Http\Controllers\AuthCheckController::class, 'test'])->name('test');
+Route::get('/test', [App\Http\Controllers\AuthCheckController::class, 'test'])->name('test');
 
+Route::fallback(function() {
+    abort(404);
+});

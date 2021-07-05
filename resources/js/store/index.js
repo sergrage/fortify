@@ -9,7 +9,7 @@ export default new Vuex.Store({
         isAuth: false,
         menuLinks: {
             main: {
-                url : "",
+                url : "/",
                 text: "Главная"
             },
             page1: {
@@ -17,11 +17,11 @@ export default new Vuex.Store({
                 text: "Страница 1"
             },
             page2 : {
-                url : "/b",
+                url : "b",
                 text: "Страница 2"
             },
             page3: {
-                url : "/c",
+                url : "c",
                 text: "Страница 3"
             }
         }
@@ -29,15 +29,12 @@ export default new Vuex.Store({
     actions: {
         checkAuth(context, payload) {
             axios.get('/user-is-auth').then((response) =>{
-                console.log('Ответ сервера', !!response.data);
                 context.commit('SET_IS_AUTH', !!response.data);
-                console.log('Юзер вошел?', context.state.isAuth);
             });
         },
         closeMobileMenu(context, payload){
             window.addEventListener('resize', function(event) {
                 if(document.body.clientWidth >= 1024) {
-                    console.log('экран больше 1024 пикселя')
                     context.commit('SET_MOBILE_BUTTON', false);
                 }
             }, true);

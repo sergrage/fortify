@@ -1,3 +1,3 @@
-<x-guest-layout>
+<x-main-layout>
 123
-</x-guest-layout>
+</x-main-layout>

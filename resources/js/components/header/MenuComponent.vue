@@ -59,7 +59,6 @@ export default {
         menuLinks(){
             return this.$store.state.menuLinks;
         },
-        
         menuOpen() {
             return this.$store.state.mobileMenuOpen;
         },
@@ -69,12 +68,17 @@ export default {
     },
     methods: {
         menuLinkStyle($url) {
-            return (this.currentUrl == $url ||  this.currentUrl.includes($url)) ? 'menu-link__active' : 'menu-link';
+            if(this.currentUrl === $url ) {
+                return 'menu-link__active';
+            }
+            if($url.length > 1) {
+                return (this.currentUrl.indexOf($url) !== -1 && this.currentUrl !== '/') ? 'menu-link__active' : 'menu-link';
+            }
+            return 'menu-link';
         },
     },
     created() {
-        console.log('текущий url', this.currentUrl)
-        console.log('текущий url', this.currentUrl.includes(""))
+
     }
 }
 </script>
