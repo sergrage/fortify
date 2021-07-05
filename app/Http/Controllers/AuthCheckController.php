@@ -13,4 +13,10 @@ class AuthCheckController extends Controller
     public function authCheck() {
         dd(Auth::check());
     }
+
+
+    public function test()
+    {
+    	return view('test');
+    }
 }

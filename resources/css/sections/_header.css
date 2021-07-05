@@ -1,4 +1,3 @@
-
 .header {
     &__menuIcon {
         width: 25px;
@@ -62,3 +61,25 @@
         }
     }
 }
+
+.registerButton {
+    @apply ml-4 text-sm text-white underline mt-6 p-3 border rounded-lg transition duration-500 ease-in-out hover:bg-purple-700;
+}
+
+.brand {
+    &__wrapper {
+        @apply flex w-1/2 lg:w-1/3 justify-center md:justify-start text-white font-extrabold py-2;
+    }
+
+    &__link {
+        @apply text-white no-underline hover:text-white hover:no-underline;
+    }
+}
+
+.menu-link {
+     @apply inline-block text-gray-600 no-underline hover:text-gray-200 hover:underline py-2 transition duration-500 ease-in-out;
+
+    &__active {
+       @apply inline-block py-2 px-4 text-white no-underline;
+    }
+}  

@@ -29,3 +29,7 @@ Route::middleware(['auth'])->get('/profile', function(){
 
 //Route::get('user-is-auth', [App\Http\Controllers\AuthCheckController::class, 'authCheck']);
 Route::get('user-is-auth', fn() => Auth::check() ? 1 : 0);
+
+
+Route::get('/test/1', [App\Http\Controllers\AuthCheckController::class, 'test'])->name('test');
+

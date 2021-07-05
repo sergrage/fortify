@@ -6093,7 +6093,7 @@ readers do not read off random characters that represent icons */
 
   src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24);
 
-  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?216edb96b562c79adc09e2d3c63db7c0#fontawesome) format("svg");
+  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?7b7d0ddbcc46b8bdd49447729876f75c#fontawesome) format("svg");
 }
 
 .fab {
@@ -6112,7 +6112,7 @@ readers do not read off random characters that represent icons */
 
   src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7);
 
-  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?19e27d348fefc21941e0310a0ec6339b#fontawesome) format("svg");
+  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?ac3d16eb330a74f2279acc030951c2ff#fontawesome) format("svg");
 }
 
 .far {
@@ -6131,7 +6131,7 @@ readers do not read off random characters that represent icons */
 
   src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1);
 
-  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?13de59f1a36b6cb4bca0050160ff0e41#fontawesome) format("svg");
+  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?3fbf3c2553ba03410a4fd08478778c3d#fontawesome) format("svg");
 }
 
 .fa,
@@ -6206,6 +6206,117 @@ readers do not read off random characters that represent icons */
       bottom:  1px;
       left: 0;
     }
+
+.registerButton {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
+  border-width: 1px;
+}
+
+.registerButton:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(109, 40, 217, var(--tw-bg-opacity));
+}
+
+.registerButton {
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  text-decoration: underline;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand__wrapper {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-weight: 800;
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+  }
+
+@media (min-width: 768px) {
+    .brand__wrapper {
+      justify-content: flex-start;
+    }
+  }
+
+@media (min-width: 1024px) {
+    .brand__wrapper {
+      width: 33.333333%;
+    }
+  }
+
+.brand__link {
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+  }
+
+.brand__link:hover {
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+  }
+
+.brand__link {
+    text-decoration: none;
+  }
+
+.brand__link:hover {
+    text-decoration: none;
+  }
+
+.menu-link {
+  display: inline-block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(75, 85, 99, var(--tw-text-opacity))
+}
+
+.menu-link:hover {
+  --tw-text-opacity: 1;
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.menu-link {
+  text-decoration: none;
+}
+
+.menu-link:hover {
+  text-decoration: underline;
+}
+
+.menu-link {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-link__active {
+    display: inline-block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+    text-decoration: none;
+  }
 
 /*! tailwindcss v2.2.4 | MIT License | https://tailwindcss.com
  */

@@ -15,8 +15,9 @@ let app = new Vue ({
     store,
     created() {
         this.$store.dispatch("checkAuth")
+        this.$store.dispatch("closeMobileMenu")
 	},
     mounted(){
-
+    	
     }
 });

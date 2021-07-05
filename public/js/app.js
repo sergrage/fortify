@@ -1862,7 +1862,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   methods: {
     openMenu: function openMenu() {
-      this.toggleBtn = !this.toggleBtn;
+      // this.toggleBtn =! this.toggleBtn;
       this.$store.commit('SET_MOBILE_BUTTON', !this.$store.state.mobileMenuOpen);
       console.log(this.$store.state.mobileMenuOpen);
     }
@@ -1931,20 +1931,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['currentUrl'],
   data: function data() {
     return {};
   },
   computed: {
+    menuLinks: function menuLinks() {
+      return this.$store.state.menuLinks;
+    },
     menuOpen: function menuOpen() {
       return this.$store.state.mobileMenuOpen;
     },
@@ -1952,7 +1947,15 @@ __webpack_require__.r(__webpack_exports__);
       return !this.$store.state.isAuth;
     }
   },
-  methods: {}
+  methods: {
+    menuLinkStyle: function menuLinkStyle($url) {
+      return this.currentUrl == $url || this.currentUrl.includes($url) ? 'menu-link__active' : 'menu-link';
+    }
+  },
+  created: function created() {
+    console.log('текущий url', this.currentUrl);
+    console.log('текущий url', this.currentUrl.includes(""));
+  }
 });
 
 /***/ }),
@@ -1979,6 +1982,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1__.default({
   store: _store__WEBPACK_IMPORTED_MODULE_0__.default,
   created: function created() {
     this.$store.dispatch("checkAuth");
+    this.$store.dispatch("closeMobileMenu");
   },
   mounted: function mounted() {}
 });
@@ -2004,7 +2008,25 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vuex__WEBPACK_IMPORTED_MODULE_1__.d
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_1__.default.Store({
   state: {
     mobileMenuOpen: false,
-    isAuth: false
+    isAuth: false,
+    menuLinks: {
+      main: {
+        url: "",
+        text: "Главная"
+      },
+      page1: {
+        url: "test",
+        text: "Страница 1"
+      },
+      page2: {
+        url: "/b",
+        text: "Страница 2"
+      },
+      page3: {
+        url: "/c",
+        text: "Страница 3"
+      }
+    }
   },
   actions: {
     checkAuth: function checkAuth(context, payload) {
@@ -2013,6 +2035,14 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vuex__WEBPACK_IMPORTED_MODULE_1__.d
         context.commit('SET_IS_AUTH', !!response.data);
         console.log('Юзер вошел?', context.state.isAuth);
       });
+    },
+    closeMobileMenu: function closeMobileMenu(context, payload) {
+      window.addEventListener('resize', function (event) {
+        if (document.body.clientWidth >= 1024) {
+          console.log('экран больше 1024 пикселя');
+          context.commit('SET_MOBILE_BUTTON', false);
+        }
+      }, true);
     }
   },
   getters: {},
@@ -2045,7 +2075,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.slide-fade-enter-active[data-v-409bad07] {\n    transition: all .8s ease;\n}\n.slide-fade-leave-active[data-v-409bad07] {\n    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-409bad07], .slide-fade-leave-to[data-v-409bad07]\n    /* .slide-fade-leave-active до версии 2.1.8 */ {\n    transform: translateX(10px);\n    opacity: 0;\n}\n.menu-link[data-v-409bad07] {\n    display: block;\n    border-bottom: 1px solid #9ca3af;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.slide-fade-enter-active[data-v-409bad07] {\r\n    transition: all .8s ease;\n}\n.slide-fade-leave-active[data-v-409bad07] {\r\n    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-409bad07], .slide-fade-leave-to[data-v-409bad07]\r\n    /* .slide-fade-leave-active до версии 2.1.8 */ {\r\n    transform: translateX(10px);\r\n    opacity: 0;\n}\n.mobile-menu-link[data-v-409bad07] {\r\n    display: block;\r\n    border-bottom: 1px solid #9ca3af;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20037,7 +20067,7 @@ var render = function() {
       {
         class:
           "header__menuIcon lg:hidden block " +
-          (_vm.toggleBtn ? "" : "header__menuIcon--close"),
+          (!this.$store.state.mobileMenuOpen ? "" : "header__menuIcon--close"),
         on: {
           click: function($event) {
             return _vm.openMenu()
@@ -20078,7 +20108,32 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _vm._m(1),
+        _c(
+          "div",
+          { staticClass: "hidden lg:flex pt-2 content-center w-1/2 lg:w-5/12" },
+          [
+            _c(
+              "ul",
+              {
+                staticClass:
+                  "list-reset flex justify-between flex-1 md:flex-none items-center"
+              },
+              _vm._l(_vm.menuLinks, function(link) {
+                return _c("li", { staticClass: "mr-3 xl:mr-12" }, [
+                  _c(
+                    "a",
+                    {
+                      class: _vm.menuLinkStyle(link.url),
+                      attrs: { href: link.url }
+                    },
+                    [_vm._v(_vm._s(link.text))]
+                  )
+                ])
+              }),
+              0
+            )
+          ]
+        ),
         _vm._v(" "),
         _c("transition", { attrs: { name: "slide-fade" } }, [
           _vm.menuOpen
@@ -20096,7 +20151,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 delay-200 menu-link",
+                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 duration-500 ease-in-out mobile-menu-link",
                           attrs: { href: "/" }
                         },
                         [_vm._v("Главная")]
@@ -20108,7 +20163,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 delay-200 menu-link",
+                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 duration-500 ease-in-out mobile-menu-link",
                           attrs: { href: "#" }
                         },
                         [_vm._v("Страница 1")]
@@ -20120,7 +20175,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 delay-200 menu-link",
+                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 duration-500 ease-in-out mobile-menu-link",
                           attrs: { href: "#" }
                         },
                         [_vm._v("Страница 2")]
@@ -20132,7 +20187,7 @@ var render = function() {
                         "a",
                         {
                           staticClass:
-                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 delay-200 menu-link",
+                            "uppercase w-full text-black leading-9 h-9 pl-3 bg-gray-200 hover:bg-gray-100 duration-500 ease-in-out mobile-menu-link",
                           attrs: { href: "#" }
                         },
                         [_vm._v("Страница 3")]
@@ -20151,7 +20206,7 @@ var render = function() {
                               "a",
                               {
                                 staticClass:
-                                  "uppercase w-full leading-9 h-9 pl-3  hover:bg-gray-100 delay-200 menu-link",
+                                  "uppercase w-full leading-9 h-9 pl-3  hover:bg-gray-600 duration-500 ease-in-out mobile-menu-link",
                                 attrs: { href: "/register" }
                               },
                               [_vm._v("Зарегстрироваться")]
@@ -20172,7 +20227,7 @@ var render = function() {
                               "a",
                               {
                                 staticClass:
-                                  "uppercase w-full leading-9 h-9 pl-3 hover:bg-gray-100 delay-200 menu-link",
+                                  "uppercase w-full leading-9 h-9 pl-3 hover:bg-gray-600 duration-500 ease-in-out mobile-menu-link",
                                 attrs: { href: "/login" }
                               },
                               [
@@ -20196,7 +20251,7 @@ var render = function() {
                               "a",
                               {
                                 staticClass:
-                                  "uppercase w-full leading-9 h-9 pl-3 hover:bg-gray-100 delay-200 menu-link",
+                                  "uppercase w-full leading-9 h-9 pl-3 hover:bg-gray-600 duration-500 ease-in-out mobile-menu-link",
                                 attrs: { href: "/logout" }
                               },
                               [_vm._v("Выйти")]
@@ -20219,95 +20274,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex w-1/2 lg:w-1/3 justify-center md:justify-start text-white font-extrabold py-2"
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-white no-underline hover:text-white hover:no-underline",
-            attrs: { href: "#" }
-          },
-          [
-            _c("span", { staticClass: "text-2xl pl-2" }, [
-              _c("i", { staticClass: "em em-grinning" }),
-              _vm._v(" Название бренда")
-            ])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "hidden lg:flex pt-2 content-center w-1/2 lg:w-5/12" },
-      [
-        _c(
-          "ul",
-          {
-            staticClass:
-              "list-reset flex justify-between flex-1 md:flex-none items-center"
-          },
-          [
-            _c("li", { staticClass: "mr-3 xl:mr-12" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "inline-block py-2 px-4 text-white no-underline",
-                  attrs: { href: "/" }
-                },
-                [_vm._v("Главная")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "mr-3 xl:mr-12" }, [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2",
-                  attrs: { href: "#" }
-                },
-                [_vm._v("Страница 1")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "mr-3 xl:mr-12" }, [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2",
-                  attrs: { href: "#" }
-                },
-                [_vm._v("Страница 2")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "mr-3 xl:mr-12" }, [
-              _c(
-                "a",
-                {
-                  staticClass:
-                    "inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2",
-                  attrs: { href: "#" }
-                },
-                [_vm._v("Страница 3")]
-              )
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "brand__wrapper" }, [
+      _c("a", { staticClass: "barnd__link", attrs: { href: "#" } }, [
+        _c("span", { staticClass: "text-2xl pl-2" }, [
+          _c("i", { staticClass: "em em-grinning" }),
+          _vm._v(" Название бренда")
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
