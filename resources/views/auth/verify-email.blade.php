@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="h-screen overflow-hidden flex items-center justify-center">
+    <div class="mt-52 overflow-hidden flex items-center justify-center">
         <div class="flex items-center bg-white dark:bg-gray-900" style="width: 600px;">
             <div class="container mx-auto">
                 <div class="my-10">

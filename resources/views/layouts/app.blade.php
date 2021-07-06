@@ -13,7 +13,7 @@
     <header>
         <!--Nav-->
         <nav class="bg-gray-800 p-2 mt-0 w-full"> <!-- Add this to make the nav fixed: "fixed z-10 top-0" -->
-            <menu-component></menu-component>
+            <menu-component current-url="{{ Request::path() }}"></menu-component>
             <menubtn-component></menubtn-component>
             <div class="hidden lg:block absolute w-1/4 top-0 right-0 px-6 py-6 text-right">
                 <a href="{{ url('/home') }}" class="text-sm text-white underline mt-6">{{Auth()->user()->name}}</a>

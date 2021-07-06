@@ -24,7 +24,8 @@
                                 <label for="password" class="text-sm text-gray-600 dark:text-gray-400">Пароль</label>
                                 <a href="/forgot-password" class="text-sm text-gray-400 focus:outline-none focus:text-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-300">Забыли пароль?</a>
                             </div>
-                            <input type="password" name="password" id="password" placeholder="Ваш пароль" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                            <input type="password" name="password" id="password" placeholder="Ваш пароль" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" /><i class="far fa-eye-slash cursor-pointer absolute ml-1.5 mt-3.5"></i>
+                            <i class="far fa-eye cursor-pointer absolute ml-1.5 mt-3.5"></i>
                             @error('password')
                             <span class="text-red-600" role="alert">
                                  <strong>{{ $message }}</strong>

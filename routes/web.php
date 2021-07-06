@@ -32,6 +32,7 @@ Route::get('user-is-auth', fn() => Auth::check() ? 1 : 0);
 
 
 Route::get('/test', [App\Http\Controllers\AuthCheckController::class, 'test'])->name('test');
+Route::middleware(['auth'])->get('/verify-email', fn() => view('auth.verify-email'))->name('verify-email');
 
 Route::fallback(function() {
     abort(404);

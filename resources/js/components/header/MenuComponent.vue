@@ -68,6 +68,7 @@ export default {
     },
     methods: {
         menuLinkStyle($url) {
+            // || this.currentUrl === 'login' || this.currentUrl == 'register'
             if(this.currentUrl === $url ) {
                 return 'menu-link__active';
             }
